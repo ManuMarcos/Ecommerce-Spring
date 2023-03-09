@@ -13,7 +13,7 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService{
 
     @Autowired
-    ProductDao productDao;
+    private ProductDao productDao;
 
 
     @Transactional(readOnly = true)
@@ -30,13 +30,13 @@ public class ProductServiceImpl implements ProductService{
 
     @Transactional
     @Override
-    public void remove(Product product) {
+    public void delete(Product product) {
         productDao.delete(product);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public Product findProduct(Product product) {
-        return productDao.findById(product.getIdProducto()).orElse(null);
+    public Product findProductById(Product product) {
+        return productDao.findById(product.getIdProduct()).orElse(null);
     }
 }

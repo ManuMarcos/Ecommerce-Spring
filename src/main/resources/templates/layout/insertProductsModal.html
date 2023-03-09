@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/syles.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- Modal -->
+	<div th:fragment="modal" class="modal fade" id="insertProductsModal" tabindex="-1" aria-labelledby="insertProductsModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" th:text="#{insertProducts.title}"></h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/saveProduct}" method="post" th:object="${product}">
+						<div class="mb-3">
+							<label for="name" class="form-label">Nombre: </label>
+							<input type="text" name="name" class="form-control" th:field="*{name}">
+						</div>
+						<div class="mb-3">
+							<label for="description" class="form-label">Descripcion: </label>
+							<input type="text" name="description" class="form-control" th:field="*{description}">
+						</div>
+						<div class="mb-3">
+							<label for="category" class="form-label">Categoria: </label>
+							<input type="text" name="category" class="form-control" th:field="*{category}">
+						</div>
+						<div class="mb-3">
+							<label for="price" class="form-label">Precio: </label>
+							<input type="number" name="price" class="form-control" th:field="*{price}">
+						</div>
+						<div class="mb-3">
+							<label for="img-link" class="form-label">Link a imagen: </label>
+							<input type="text" name="img-link" class="form-control" th:field="*{imgLink}">
+						</div>
+						
+						<button type="submit" name="guardar" class="btn btn-primary">Guardar</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+	        crossorigin="anonymous"></script>
+</body>
+</html>

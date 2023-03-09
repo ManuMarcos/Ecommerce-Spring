@@ -11,8 +11,8 @@ public interface ProductService {
 
     public void save(Product product);
 
-    public void remove(Product product);
+    public void delete(Product product);
 
-    public Product findProduct(Product product);
+    public Product findProductById(Product product);
 
 }

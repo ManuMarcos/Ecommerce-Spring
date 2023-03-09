@@ -6,6 +6,7 @@ import lombok.Data;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,22 +17,31 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idProducto;
+    @Column(name = "id_product")
+    private Integer idProduct;
 
     @NotEmpty
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
     private String description;
 
     @NotEmpty
+    @Column(name = "category")
     private String category;
 
+    @Column(name = "price")
     private float price;
 
-    private int discountId;
-
     @NotEmpty
+    @Column(name = "image_link")
     private String imgLink;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Discount> discounts;
+
+
 
 
 

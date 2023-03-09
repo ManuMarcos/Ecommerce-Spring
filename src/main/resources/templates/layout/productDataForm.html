@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+  <form th:action="@{/saveProduct}"  method="post" th:fragment="form" th:object="${product}">
+    <div class="mb-3">
+      <label for="productInputId" class="form-label" th:text="#{product.id}" ></label>
+      <input type="number" class="form-control" id="productInputId" th:field="*{idProduct}">
+    </div>
+    <div class="mb-3">
+      <label for="productNameInput" class="form-label" th:text="#{product.name}"></label>
+      <input type="text" class="form-control" id="productNameInput" th:field="*{name}">
+    </div>
+    <div class="mb-3">
+      <label for="productDescriptionInput" class="form-label" th:text="#{product.description}"></label>
+      <input type="text" class="form-control" id="productDescriptionInput" th:field="*{description}">
+    </div>
+    <div class="mb-3">
+      <label for="productCategoryInput" class="form-label" th:text="#{product.category}"></label>
+      <input type="text" class="form-control" id="productCategoryInput" th:field="*{category}">
+    </div>
+    <div class="mb-3">
+      <label for="productPriceInput" class="form-label" th:text="#{product.price}"></label>
+      <input type="text" class="form-control" id="productPriceInput" th:field="*{price}">
+    </div>
+    <div class="mb-3">
+      <label for="productImgLinkInput" class="form-label" th:text="#{product.img}"></label>
+      <input type="text" class="form-control" id="productImgLinkInput" th:field="*{imgLink}">
+    </div>
+    <button type="submit" class="btn btn-primary" th:text="#{accion.save}"></button>
+  </form>
+
+</body>
+</html>
