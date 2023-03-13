@@ -1,16 +1,17 @@
 package com.arg.ecommerce.service;
 
 import com.arg.ecommerce.domain.User;
+import com.arg.ecommerce.dto.UserDto;
 
 import java.util.List;
 
 public interface UserService {
 
-    public List<User> listUsers();
+    List<UserDto> listUsers();
 
-    public void save(User user);
+    void save(UserDto userDto);
 
-    public void delete(User user);
+    void delete(UserDto userDto);
 
-    public User findUserById(User user);
+    User findUserByEmail(String email);
 }

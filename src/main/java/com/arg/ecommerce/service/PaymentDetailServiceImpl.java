@@ -36,6 +36,6 @@ public class PaymentDetailServiceImpl implements PaymentDetailService{
     @Transactional(readOnly = true)
     @Override
     public PaymentDetail findPaymentDetailById(PaymentDetail paymentDetail) {
-        return paymentDetailDao.findById(paymentDetail.getIdPaymentDetail()).orElse(null);
+        return paymentDetailDao.findById(paymentDetail.getId()).orElse(null);
     }
 }

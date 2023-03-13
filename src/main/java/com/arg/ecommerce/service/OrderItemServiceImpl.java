@@ -36,6 +36,6 @@ public class OrderItemServiceImpl implements OrderItemService{
     @Transactional(readOnly = true)
     @Override
     public OrderItem findOrderItemById(OrderItem orderItem) {
-        return orderItemDao.findById(orderItem.getIdOrderItem()).orElse(null);
+        return orderItemDao.findById(orderItem.getId()).orElse(null);
     }
 }

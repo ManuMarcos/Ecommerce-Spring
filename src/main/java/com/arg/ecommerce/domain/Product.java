@@ -2,6 +2,7 @@ package com.arg.ecommerce.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 
@@ -17,39 +18,27 @@ public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_product")
-    private Integer idProduct;
+    private Long id;
 
     @NotEmpty
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @NotEmpty
-    @Column(name = "category")
-    private String category;
-
-    @Column(name = "price")
     private float price;
 
-    @NotEmpty
     @Column(name = "image_link")
     private String imgLink;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Discount> discounts;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
-
-
-
-
-
-
-
-
+    @OneToMany(mappedBy = "product")
+    List<ProductSize> productSizes;
 
 
 }

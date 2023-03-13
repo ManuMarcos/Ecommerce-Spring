@@ -15,8 +15,7 @@ public class Discount implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_discount")
-    private Integer idDiscount;
+    private Integer id;
 
     private String name;
 
@@ -24,7 +23,6 @@ public class Discount implements Serializable {
     private String description;
 
     @Column(name = "discount_percent")
-    @NotEmpty
     private float discountPercent;
 
     @ManyToOne

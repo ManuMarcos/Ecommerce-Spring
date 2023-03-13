@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+
+  <form th:action="" th:object="${user}" method="post" enctype="UTF8">
+    <!-- First Name -->
+    <div class="mb-3">
+      <label class="form-label" th:text="#{user.firstName}">first</label>
+      <input class="form-control" th:field="*{firstName}"/>
+      <p th:each="error: ${#fields.errors('firstName')}"
+         th:text="${error}">Validation error</p>
+    </div>
+    <!-- Last Name -->
+    <div>
+      <label class="form-label" th:text="#{user.lastName}">last</label>
+      <input class="form-control" th:field="*{lastName}"/>
+      <p th:each="error : ${#fields.errors('lastName')}"
+         th:text="${error}">Validation error</p>
+    </div>
+    <!-- Email -->
+    <div>
+      <label class="form-label" th:text="#{user.email}">email</label>
+      <input class="form-control" type="email" th:field="*{email}"/>
+      <p th:each="error : ${#fields.errors('email')}"
+         th:text="${error}">Validation error</p>
+    </div>
+    <!-- Password -->
+    <div>
+      <label class="form-label" th:text="#{user.password}">password</label>
+      <input class="form-control" type="password" th:field="*{password}"/>
+      <p th:each="error : ${#fields.errors('password')}"
+         th:text="${error}">Validation error</p>
+    </div>
+    <!-- Confirm Password -->
+    <div>
+      <label class="form-label" th:text="#{user.confirmPass}">confirm</label>
+      <input class="form-control" type="password" th:field="*{matchingPassword}"/>
+    </div>
+    <button type="submit" th:text="#{action.signUp}">Submit</button>
+  </form>
+
+</html>

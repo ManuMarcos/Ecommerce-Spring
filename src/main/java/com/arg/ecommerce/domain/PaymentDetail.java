@@ -14,8 +14,7 @@ public class PaymentDetail implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_payment_detail")
-    private Integer idPaymentDetail;
+    private Integer id;
 
     private float amount;
 

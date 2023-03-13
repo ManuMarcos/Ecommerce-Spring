@@ -1,11 +1,13 @@
-package com.arg.ecommerce.web;
+package com.arg.ecommerce.controllers;
 
 import com.arg.ecommerce.domain.Product;
 import com.arg.ecommerce.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,16 +19,6 @@ public class ProductsRestController {
     @Autowired
     ProductService productService;
 
-    //Devuelve el producto buscado en formato JSON
-    @GetMapping("/product/{idProduct}")
-    public ResponseEntity<Product> findProductById(Product product){
-        product = productService.findProductById(product);
-        if(product != null){
-            return ResponseEntity.ok().body(product);
-        }else{
-            return ResponseEntity.notFound().build();
-        }
-    }
 
     //Devuelve una lista de productos en formato JSON
     @GetMapping("/listProducts")

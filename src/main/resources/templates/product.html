@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${product.name}"></title>
+	<link rel="stylesheet" th:href="@{/css/syles.css}">
+	<div th:replace="~{layout/libraries :: headers}"></div>
+</head>
+<body>
+
+	<!-- Header -->
+	<div th:insert="~{layout/header :: header}"></div>
+	
+	<!-- Product Info -->
+	<div th:replace="~{layout/productInfo :: card}"></div>
+	
+	<!-- Footer -->
+	<div th:insert="~{layout/footer}"></div>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.arg.ecommerce.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -15,18 +16,17 @@ public class ShoppingSession implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_shopping_session")
-    private Integer idShoppingSession;
+    private Long id;
 
     private float total;
 
     //mappedBy indica que la columna dada es propiedad de otra entidad
-    @OneToMany(mappedBy = "shoppingSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "shoppingSession")
     private List<CartItem> cartItems;
 
 
     //Que columna en la tabla ShoppingSession tiene la FK
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     @OneToOne(fetch = FetchType.LAZY)
     private User user;
 

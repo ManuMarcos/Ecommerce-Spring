@@ -35,6 +35,6 @@ public class DiscountServiceImpl implements DiscountService{
     @Transactional(readOnly = true)
     @Override
     public Discount findDiscountById(Discount discount) {
-        return discountDao.findById(discount.getIdDiscount()).orElse(null);
+        return discountDao.findById(discount.getId()).orElse(null);
     }
 }

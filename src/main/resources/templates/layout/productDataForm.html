@@ -1,38 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta charset="UTF-8">
-	<title>Title</title>
-</head>
-<body>
-  <form th:action="@{/saveProduct}"  method="post" th:fragment="form" th:object="${product}">
-    <div class="mb-3">
-      <label for="productInputId" class="form-label" th:text="#{product.id}" ></label>
-      <input type="number" class="form-control" id="productInputId" th:field="*{idProduct}">
+
+  <form th:action="@{/saveProduct}"  class="mt-3"  method="post" th:fragment="form" th:object="${product}">
+    <!-- Product Image -->
+    <div th:if="*{imgLink != null}" class="mb-3">
+      <img th:src="*{imgLink}" class="img-thumbnail img-fluid table-product-image" alt="${product.description}}">
     </div>
+    <!-- Product ID -->
+    <div th:if="*{id != null}" class="mb-3">
+      <label for="productInputId" class="form-label" th:text="#{product.id}"  ></label>
+      <input type="number" class="form-control" readonly th:field="*{id}" id="productInputId">
+    </div>
+    <!-- Product Name -->
     <div class="mb-3">
       <label for="productNameInput" class="form-label" th:text="#{product.name}"></label>
       <input type="text" class="form-control" id="productNameInput" th:field="*{name}">
     </div>
+    <!-- Product Description -->
     <div class="mb-3">
       <label for="productDescriptionInput" class="form-label" th:text="#{product.description}"></label>
       <input type="text" class="form-control" id="productDescriptionInput" th:field="*{description}">
     </div>
+    <!-- Product Category -->
     <div class="mb-3">
-      <label for="productCategoryInput" class="form-label" th:text="#{product.category}"></label>
-      <input type="text" class="form-control" id="productCategoryInput" th:field="*{category}">
+      <label for="categorySelect" th:text="#{form.selectCategory}"></label>
+      <select class="form-select" th:field="*{category}" id="categorySelect">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+      </select>
     </div>
+    <!-- Product Price -->
     <div class="mb-3">
       <label for="productPriceInput" class="form-label" th:text="#{product.price}"></label>
       <input type="text" class="form-control" id="productPriceInput" th:field="*{price}">
     </div>
+    <!-- Product Image Link -->
     <div class="mb-3">
       <label for="productImgLinkInput" class="form-label" th:text="#{product.img}"></label>
       <input type="text" class="form-control" id="productImgLinkInput" th:field="*{imgLink}">
     </div>
-    <button type="submit" class="btn btn-primary" th:text="#{accion.save}"></button>
+    <!-- Form Buttons -->
+    <button type="submit" class="btn btn-primary" th:text="#{action.save}"></button>
+    <a class="btn btn-secondary" href="javascript:history.back()" th:text="#{action.back}"></a>
   </form>
 
-</body>
 </html>

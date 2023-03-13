@@ -36,6 +36,6 @@ public class OrderDetailServiceImpl implements OrderDetailService{
     @Transactional(readOnly = true)
     @Override
     public OrderDetail findOrderDetailById(OrderDetail orderDetail) {
-        return orderDetailDao.findById(orderDetail.getIdOrderDetail()).orElse(null);
+        return orderDetailDao.findById(orderDetail.getId()).orElse(null);
     }
 }

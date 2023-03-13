@@ -12,20 +12,28 @@ public class CartItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cart_item")
-    private Integer idCartItem;
+    @EmbeddedId
+    CartItemKey id;
+
+    @ManyToOne
+    @MapsId("shoppingSessionId")
+    @JoinColumn(name = "shoppingSession_id")
+    ShoppingSession shoppingSession;
+
+    @ManyToOne
+    @MapsId("productId")
+    @JoinColumn(name = "product_id")
+    Product product;
+
+    @ManyToOne
+    @MapsId("sizeId")
+    @JoinColumn(name = "size_id")
+    Size size;
 
     private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "session_id")
-    private ShoppingSession shoppingSession;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_id")
-    private Product product;
+
 
 }

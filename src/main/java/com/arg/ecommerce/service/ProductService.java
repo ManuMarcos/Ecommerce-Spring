@@ -1,18 +1,21 @@
 package com.arg.ecommerce.service;
 
 import com.arg.ecommerce.domain.Product;
+import com.arg.ecommerce.dto.ProductDto;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductService {
 
-    public List<Product> listProducts();
+    List<Product> listProducts();
 
-    public void save(Product product);
+    void save(Product product);
 
-    public void delete(Product product);
+    void delete(Long id);
 
-    public Product findProductById(Product product);
+    Product findProductById(Long id);
+
+    void addSize(Product product, String size);
 
 }
